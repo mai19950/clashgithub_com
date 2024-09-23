@@ -1,0 +1,38 @@
+name: Web Scraping
+
+# 定时任务：每天 UTC 时间 8 点运行
+on:
+  schedule:
+    - cron: '0 8 * * *'
+
+jobs:
+  scrape:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout Repository
+      uses: actions/checkout@v2
+
+    - name: Set up Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: '3.x'
+
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install requests
+
+    - name: Run Scraper
+      run: |
+        python scrape.py
+
+    - name: Commit changes
+      run: |
+        git config --global user.name "mai19950"
+        git config --global user.email "underdog-95@outlook.com"
+        git add .
+        git commit -m "Update scraped content for today"
+        git push
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
