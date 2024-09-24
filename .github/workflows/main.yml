@@ -32,10 +32,13 @@ jobs:
       run: |
         git config --global user.name "mai19950"
         git config --global user.email "underdog-95@outlook.com"
-        git pull origin main
         git add .
         git commit -m "Update scraped content for $(date +'%Y-%m-%d')"
-        git push
+        # 拉取远程更改并合并
+        git pull --rebase origin main
+        
+        # 推送更改
+        git push origin main
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
