@@ -32,9 +32,9 @@ jobs:
       run: |
         git config --global user.name "mai19950"
         git config --global user.email "underdog-95@outlook.com"
+        git pull origin main
         git add .
         git commit -m "Update scraped content for $(date +'%Y-%m-%d')"
-        git pull origin main
         git push
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
