@@ -1,9 +1,10 @@
 name: Web Scraping
 
 # 定时任务：每天 UTC 时间 8 点运行
+# 定时任务：每天 UTC 时间 0 点运行（即北京时间上午 8 点）
 on:
   schedule:
-    - cron: '0 8 * * *'
+    - cron: '0 0 * * *'
 
 jobs:
   scrape:
