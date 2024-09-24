@@ -52,9 +52,9 @@ async def main():
   if scrape_success:
     current_datetime = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
     message = (
-      f"更新成功"
-      f"Time: {current_datetime}"
-      f"origin: clashgithub.com"
+      f"更新成功\n"
+      f"Time: {current_datetime}\n"
+      f"origin: clashgithub.com\n"
       f"订阅地址: https://raw.githubusercontent.com/mai19950/clashgithub_com/main/site"
     )
     await send_telegram_message(message)
