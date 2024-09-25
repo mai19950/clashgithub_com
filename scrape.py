@@ -2,7 +2,7 @@ import aiohttp
 import asyncio
 import aiofiles
 import os
-from datetime import datetime
+from datetime import datetime, timedelta
 
 # 从环境变量中获取 Telegram Bot Token 和 Chat ID
 TELEGRAM_BOT_TOKEN = os.getenv('TELEGRAM_BOT_TOKEN')
@@ -50,7 +50,11 @@ async def main():
   scrape_success = await scrape()
   
   if scrape_success:
-    current_datetime = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+    # 获取当前时间
+    current_time = datetime.now()
+    # 北京时间是 UTC+8，所以加上8小时
+    beijing_time = current_time + timedelta(hours=8)
+    current_datetime = beijing_time.strftime('%Y-%m-%d %H:%M:%S')
     message = (
       f"更新成功\n"
       f"Time: {current_datetime}\n"
