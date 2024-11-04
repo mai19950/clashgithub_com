@@ -36,7 +36,8 @@ async def send_telegram_message(message):
   url = f"https://api.telegram.org/bot{TELEGRAM_BOT_TOKEN}/sendMessage"
   payload = {
         'chat_id': TELEGRAM_CHAT_ID,
-        'text': message
+        'text': message,
+        'parse_mode': 'Markdown'  # 使 Telegram 解析 Markdown 格式
   }
   async with aiohttp.ClientSession() as session:
     async with session.post(url, json=payload) as response:
@@ -59,7 +60,7 @@ async def main():
       f"更新成功\n"
       f"Time: {current_datetime}\n"
       f"origin: clashgithub.com\n"
-      f"订阅地址: https://raw.githubusercontent.com/mai19950/clashgithub_com/main/site"
+      f"订阅地址: ```https://raw.githubusercontent.com/mai19950/clashgithub_com/main/site```"
     )
     await send_telegram_message(message)
 
