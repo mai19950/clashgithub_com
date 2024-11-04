@@ -60,7 +60,7 @@ async def main():
       f"更新成功\n"
       f"Time: {current_datetime}\n"
       f"origin: clashgithub.com\n"
-      f"订阅地址: ```https://raw.githubusercontent.com/mai19950/clashgithub_com/main/site```"
+      f"订阅地址: `https://raw.githubusercontent.com/mai19950/clashgithub_com/main/site`"
     )
     await send_telegram_message(message)
 
