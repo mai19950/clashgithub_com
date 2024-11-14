@@ -21,6 +21,7 @@ async def scrape():
 
   async with aiohttp.ClientSession() as session:
     async with session.get(url) as response:
+      print(url)
       if response.status == 200:
         content = await response.text()
         async with aiofiles.open('site', 'w', encoding="utf-8") as file:
